@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>YouTube Analytic suite</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='flatly.min.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+
+		<div class="container-fluid" id="wrapper">
+
+			<div class="row">
+				<div class="col-lg-4 col-lg-offset-4" id="content">
+					<h2>{{ "Hello " ~ username ~ "!" }} Get details on YouTube videos</h2>
+
+					<form action="{{ url_for('get_subtitles') }}" method="POST" role="form">
+
+						<div class="form-group">
+							<div class="input-group">
+							  <input name="video_link" type="text" class="form-control" placeholder="Paste your link here" aria-label="video_link" aria-describedby="add-btn">
+							  <span class="input-group-btn">
+								  <button type="submit" class="btn btn-default" id="video_link">GET SUBTITLES</button>
+							  </span>
+							</div>
+						</div>
+					</form>
+                    <ul class="list-group t20">
+						{% for text in output|reverse %}
+							<li class="list-group-item">
+								{{ text._id }}<p><p> {{ text.Transcript }}
+                                <div class="btn-group">
+                                    <a type="button" href="{{ url_for('get_summary', video_id = text._id) }}" class="btn btn-warning">
+                                        SUMMARIZE
+                                    </a>
+                                </div>
+                                <div class="btn-group">
+                                    <a type="button" href="{{ url_for('analyze_sentiment', video_id = text._id) }}" class="btn btn-warning">
+                                        ANALYZE
+                                    </a>
+                                </div>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

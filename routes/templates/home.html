@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block head %} {{ super() }}
+{% endblock %}{% block content %}
+<div id="intro">
+  {% with messages = get_flashed_messages() %} {% if messages %}
+  <div class="notification is-success">
+    {{ messages[0] }}
+  </div>
+  {% endif %} {% endwith %}
+  <h1>
+    Hello!
+  </h1>
+  <centre>
+    <img
+      src="{{ url_for('static', filename= 'images/img.png') }}"
+      alt="information picture"
+    />
+  </centre>
+  <p>
+    Welcome to YouTube Analytic suite! <br />This web app is a implementation of basic CRUD and User Authentication functionality using Flask.
+  </p>
+</div>
+{% endblock %}
