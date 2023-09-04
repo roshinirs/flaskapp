@@ -20,6 +20,13 @@ def login():
     return response
 
 
+@auth.route('/logout')
+def logout():
+    obj = AuthService()
+    response = obj.logout()
+    return response
+
+
 @auth.route("/signup", methods=['POST', 'GET'])
 def signup():
     obj = AuthService()

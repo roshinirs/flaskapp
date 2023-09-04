@@ -1,22 +1,39 @@
 {% extends "base.html" %} {% block head %} {{ super() }}
 {% endblock %}{% block content %}
-<div id="intro">
-  {% with messages = get_flashed_messages() %} {% if messages %}
-  <div class="notification is-success">
-    {{ messages[0] }}
-  </div>
-  {% endif %} {% endwith %}
-  <h1>
-    Hello!
-  </h1>
-  <centre>
-    <img
-      src="{{ url_for('static', filename= 'images/img.png') }}"
-      alt="information picture"
-    />
-  </centre>
-  <p>
-    Welcome to YouTube Analytic suite! <br />This web app is a implementation of basic CRUD and User Authentication functionality using Flask.
-  </p>
-</div>
+<div class="container_area">
+      <section class="slider_section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="detail-box">
+                <h1>
+                  YouTube Analytic <br />
+                  Suite
+                </h1>
+                <p>
+                  Summarize and analysis the youtube video which burden you in
+                  knowledge transfer
+                </p>
+                <div class="btn-box">
+                  <a href="{{ url_for('auth.signup') }}" class="btn-1"> SignUp </a>
+                  <a href="{{ url_for('auth.login') }}" class="btn-2"> Login </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-lg-10 mx-auto">
+                  <div class="img-box">
+                    <img src="{{ url_for('static', filename= 'images/slider-img.png') }}" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- </div>
+        </div> -->
+      </section>
+      <!-- end slider section -->
+    </div>
 {% endblock %}

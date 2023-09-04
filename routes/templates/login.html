@@ -1,35 +1,62 @@
 {% extends "base.html" %} {% block head %} {{ super() }}
 {% endblock %} {% block content %}
-<div class="col-md-4 col-md-offset-4">
-  <form method="POST" action="/login">
-    <h2>Log In</h2>
-    {% with messages = get_flashed_messages() %} {% if messages %}
-    <div class="notification is-danger">
-      {{ messages[0] }}
+<div class="hero_area">
+      <!-- header section strats -->
+      <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="{{ url_for('auth.index') }}">
+              <span>YAS</span>
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('auth.signup') }}"> SignUp</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('auth.logout') }}">LogOut</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- end header section -->
     </div>
-    {% endif %} {% endwith %}
-    <div class="form-group">
-      <label for="username">username</label>
-      <input
-        type="text"
-        class="form-control"
-        id="username"
-        name="username"
-        aria-describedby="emailHelp"
-        placeholder="Enter username"
-      />
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        class="form-control"
-        id="password"
-        name="password"
-        placeholder="Password"
-      />
-    </div>
-    <button type="submit" class="btn btn-primary">Log In</button>
-  </form>
-</div>
+
+    <!-- contact section -->
+    <section class="contact_section layout_padding-bottom">
+      <div class="logincontainer">
+        <div class="heading_container heading_center">
+          <h2>Existing User</h2>
+        </div>
+        <div class="row">
+          <div class="col-md-8 col-lg-6 mx-auto">
+            <div class="form_container">
+              <form method="POST" action="/login">
+                <div>
+                  <input type="text" id="username" name="username" placeholder="UserName" />
+                </div>
+
+                <div>
+                  <input type="password" id="password" name="password" placeholder="Password" />
+                </div>
+
+                <div class="btn_box">
+                  <button type="submit">Login</button>
+                </div>
+              </form>
+                <div>
+                  {% if messages  %}
+                    {{ "" ~ messages ~ "" }}
+                  {% endif %}
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end contact section -->
 {% endblock %}
+

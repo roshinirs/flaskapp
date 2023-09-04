@@ -11,3 +11,6 @@ class ServerSession:
 
         except Exception as error:
             print(f"ERROR - cannot connect to db {error}")
+
+
+obj = ServerSession()
