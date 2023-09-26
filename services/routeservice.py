@@ -1,4 +1,4 @@
-from flask import jsonify, redirect, url_for
+from flask import jsonify, redirect, url_for, render_template
 from transformers import pipeline
 from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, VideoUnavailable, NoTranscriptFound
 from server.server import obj
@@ -51,11 +51,11 @@ class YoutubeService:
         response = jsonify({"Message": "summary added"})
         print(response)
         text = obj.dbconnect.output.find_one({'_id': video_id})
-        return jsonify(({"Summary": f"{text['Summary']}"}))
+        return render_template('summary.html', summary=f"{text['Summary']}")
 
     def analyze_sentiment(self, video_id):
         text = obj.dbconnect.output.find_one({'_id': video_id})
         classifier = pipeline("sentiment-analysis")
         results = classifier(text['Summary'])
         sentiment = results[0]['label']
-        return jsonify({"sentiment": sentiment, "word count": len(text['Transcript'])})
+        return render_template('analyze.html', sentiment=sentiment, wordcount=len(text['Transcript']))
