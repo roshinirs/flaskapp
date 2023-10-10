@@ -21,8 +21,54 @@
       </header>
       <!-- end header section -->
 </div>
-<div>
-<p> {{ "" ~ sentiment ~ "" }}</p>
-  <p> {{ "" ~ wordcount ~ "" }}</p>
-</div>
+  <!-- client section -->
+  <section class="client_section ">
+    <div class="container">
+      <div class="heading_container heading_center">
+      </div>
+    </div>
+    <div class="container px-0">
+      <div id="customCarousel2" class="carousel  slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-10 mx-auto">
+                  <div class="box">
+                    <div class="detail-box">
+                      <div class="client_info">
+                        <div class="client_name">
+                          <h5>
+                            Sentimental Analysis
+                          </h5>
+                        </div>
+                      </div>
+                      <h5> {{ "" ~ sentiment ~ "" }}</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-10 mx-auto">
+                  <div class="box">
+                    <div class="detail-box">
+                      <div class="client_info">
+                        <div class="client_name">
+                          <h5>
+                            Transcript Word Count
+                          </h5>
+                        </div>
+                      </div>
+                      <h5> {{ "" ~ wordcount ~ "" }}</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end client section -->
 {% endblock %}
